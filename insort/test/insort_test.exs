@@ -12,5 +12,9 @@ defmodule InsertionTest do
     assert Insertion.sort("acb") == "abc"
     assert Insertion.sort("bca") == "abc"
 
+    assert Insertion.sort("aabc") == "aabc"
+    assert Insertion.sort("abac") == "aabc"
+
+    assert Insertion.sort("abacab") == "aaabbc"
   end
 end
