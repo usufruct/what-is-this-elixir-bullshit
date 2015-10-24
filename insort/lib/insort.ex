@@ -8,20 +8,15 @@ defmodule Insertion do
   end
 
   defp sort_points(sorted, [head | tail]) do
-    more_sorted = Enum.reduce(String.codepoints(sorted), "", fn(codepoint, acc) ->
-      case {codepoint > head} do
-        {true} ->
-          acc <> head <> codepoint
-        {false} ->
-          acc <> codepoint
-      end
-    end)
+    split_point = String.codepoints(sorted)
+    |> Enum.reverse
+    |> Enum.find_index(fn(codepoint) -> codepoint < head end)
+    |> (fn(index) -> index || String.length(sorted) end).()
+    |> (fn(index) -> String.length(sorted) - index end).()
 
-    if String.length(more_sorted) == String.length(sorted) do
-      sort_points(more_sorted <> head, tail)
-    else
-      sort_points(more_sorted, tail)
-    end    
+    {front, back} = String.split_at(sorted, split_point)
+
+    sort_points(front <> head <> back, tail)
   end
 
   defp sort_points(sorted, []) do
