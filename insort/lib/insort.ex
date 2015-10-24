@@ -3,21 +3,29 @@ defmodule Insertion do
     sort_points("", String.codepoints(string))
   end
 
-  defp sort_points(accum, [head | tail]) do
-    insert_index = Enum.find_index(String.codepoints(accum), fn(sorted_codepoint) ->
-      sorted_codepoint > head
-    end)
-
-    case {insert_index} do
-      {nil} ->
-        sort_points(accum <> head, tail)
-      _ ->
-        sort_points(head <> accum, tail)
-    end
+  defp sort_points("", [head | tail]) do
+    sort_points(head, tail)
   end
 
-  defp sort_points(accum, []) do
-    accum
+  defp sort_points(sorted, [head | tail]) do
+    more_sorted = Enum.reduce(String.codepoints(sorted), "", fn(codepoint, acc) ->
+      case {codepoint > head} do
+        {true} ->
+          acc <> head <> codepoint
+        {false} ->
+          acc <> codepoint
+      end
+    end)
+
+    if String.length(more_sorted) == String.length(sorted) do
+      sort_points(more_sorted <> head, tail)
+    else
+      sort_points(more_sorted, tail)
+    end    
+  end
+
+  defp sort_points(sorted, []) do
+    sorted
   end
 
 end
