@@ -12,7 +12,11 @@ defmodule DusortTest do
 
   	assert Dusort.insort_string("ba") == "ab"
   	assert Dusort.insort_string("ca") == "ac"
-
   	assert Dusort.insort_string("ab") == "ab"
+
+  	assert Dusort.insort_string("abc") == "abc"
+  	assert Dusort.insort_string("bac") == "abc"
+
+  	assert Dusort.insort_string("abacab") == "aaabbc"
   end
 end
