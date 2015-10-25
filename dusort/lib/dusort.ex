@@ -5,6 +5,15 @@ defmodule Dusort do
 
 	@spec insort_string(bitstring) :: bitstring
 	def insort_string(unsorted) do
-		"a"
+		insort_codepoints([], String.codepoints(unsorted))
+	end
+
+	@spec insort_codepoints(list, list) :: bitstring
+	defp insort_codepoints([], [insert | []]) do
+		insert
+	end
+
+	defp insort_codepoints([], [insert | unsorted]) do
+		Enum.join([unsorted, insert])
 	end
 end

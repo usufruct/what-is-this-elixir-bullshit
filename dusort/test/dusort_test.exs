@@ -8,5 +8,9 @@ defmodule DusortTest do
 
   test "insort_string" do
   	assert Dusort.insort_string("a") == "a"
+  	assert Dusort.insort_string("b") == "b"
+
+  	assert Dusort.insort_string("ba") == "ab"
+  	assert Dusort.insort_string("ca") == "ac"
   end
 end
