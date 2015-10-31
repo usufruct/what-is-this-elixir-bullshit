@@ -8,5 +8,6 @@ defmodule PlacerTest do
 
 	test "places an item into a list at the end if index is nil" do
 		assert Placer.place([], "a", nil) == ["a"]
+		assert Placer.place([], "b", nil) == ["b"]
 	end
 end

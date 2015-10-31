@@ -4,6 +4,6 @@ defmodule Placer do
 	end
 
 	def place(list, item, position) do
-		["a"]
+		[item]
 	end
 end
