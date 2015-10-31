@@ -9,6 +9,7 @@ defmodule PlacerTest do
 	test "places an item into a list at the end if index is nil" do
 		assert Placer.place([], "a", nil) == ["a"]
 		assert Placer.place([], "b", nil) == ["b"]
+		assert Placer.place(["f"], "a", nil) == ["f", "a"]
 	end
 
 	test "places an item at index 0" do
@@ -16,5 +17,8 @@ defmodule PlacerTest do
 		assert Placer.place(["c"], "a", 0) == ["a", "c"]
 	end
 
-	
+	test "places items anywhere in the list" do
+		assert Placer.place(["a", "b", "c"], "z", 1) == ["a", "z", "b", "c"]
+		assert Placer.place(["a", "b", "c"], "z", 2) == ["a", "b", "z", "c"]
+	end
 end

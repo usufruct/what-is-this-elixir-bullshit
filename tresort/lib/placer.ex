@@ -3,11 +3,11 @@ defmodule Placer do
 		true
 	end
 
-	def place(list, item, 0) do
-		[item] ++ list
+	def place(list, item, nil) do
+		list ++ [item]
 	end
 
 	def place(list, item, position) do
-		[item]
+		List.insert_at(list, position, item)
 	end
 end
