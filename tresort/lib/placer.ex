@@ -3,6 +3,10 @@ defmodule Placer do
 		true
 	end
 
+	def place(list, item, 0) do
+		[item] ++ list
+	end
+
 	def place(list, item, position) do
 		[item]
 	end

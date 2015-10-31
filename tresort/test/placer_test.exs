@@ -10,4 +10,11 @@ defmodule PlacerTest do
 		assert Placer.place([], "a", nil) == ["a"]
 		assert Placer.place([], "b", nil) == ["b"]
 	end
+
+	test "places an item at index 0" do
+		assert Placer.place([], "a", 0) == ["a"]
+		assert Placer.place(["c"], "a", 0) == ["a", "c"]
+	end
+
+	
 end
