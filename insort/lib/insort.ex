@@ -24,4 +24,3 @@ defmodule Insertion do
   end
 
 end
-cheat setplayerpos 285066 127131 0
